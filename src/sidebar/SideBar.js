@@ -1,21 +1,33 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function SideBar() {
-    const [expanded, setExpanded] = useState(false);
+    const [width, setWidth] = useState('10vw');
+    const ref = useRef(null);
 
-    const handleMouseOver = () => {
-        setExpanded(true);
+    const startResizing = (mouseDownEvent) => {
+        const startX = mouseDownEvent.clientX;
+        const initialWidth = ref.current.offsetWidth;
+
+        const handleMouseMove = (mouseMoveEvent) => {
+            const currentX = mouseMoveEvent.clientX;
+            const newWidth = initialWidth + (currentX - startX);
+            setWidth(`${newWidth}px`);
+        };
+
+        const handleMouseUp = () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        };
+
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
     };
 
-    const handleMouseLeave = () => {
-        setExpanded(false);
-    };
     return (
-        <>
-            <div className={`side-bar ${expanded ? 'expanded' : ''}`} 
-                onMouseOver={handleMouseOver} 
-                onMouseLeave={handleMouseLeave}>
-            </div>
-        </>
-    )
+        <div className="side-bar" style={{ width: width }} ref={ref}>
+            <div className="resize-handle" onMouseDown={startResizing}></div>
+            {/* サイドバーの内容 */}
+        </div>
+    );
 }
+

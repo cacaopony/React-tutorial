@@ -5,7 +5,7 @@
   height: 100vh;
   width: 10vw;
   background-color: #4d4c86;
-  transition: width 0.5s ease;
+  transition: width 0.01s ease;
 }
 
 .side-bar.expanded{
@@ -15,4 +15,14 @@
   height: 100vh;
   width: 20vw;
   background-color: #4d4c86;
+}
+
+.resize-handle {
+  position: absolute;
+  right: 0; /* サイドバーの右端に配置 */
+  top: 0;
+  bottom: 0;
+  width: 10px; /* 適切な幅 */
+  background-color: #ccc; /* 識別しやすい色 */
+  cursor: col-resize; /* カーソルをリサイズ用に変更 */
 }
