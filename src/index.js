@@ -1,6 +1,8 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+
+//css
+import './sidebar/sidebar.css';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -13,11 +15,12 @@ import StateBasic from './chap03/StateBasic';
 import Stopwatch from './stopwatch/StopWatch';
 
 import SideBar from './sidebar/SideBar';
+import LocationComponent from './weather/LocationComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
-    <SideBar></SideBar>
+    <LocationComponent></LocationComponent>
   </StrictMode>
 );
 
