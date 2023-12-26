@@ -15,7 +15,10 @@ import StateBasic from './chap03/StateBasic';
 import Stopwatch from './stopwatch/StopWatch';
 
 import SideBar from './sidebar/SideBar';
+
+//weather app
 import LocationComponent from './weather/LocationComponent';
+// import WeatherComponent from './weather/WeatherComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

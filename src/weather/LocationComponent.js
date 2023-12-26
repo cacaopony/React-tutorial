@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import WeatherComponent from "./WeatherComponent";
 
 export default function LocationComponent() {
     const [latitude, setLatitude] = useState(null);
@@ -39,6 +40,7 @@ export default function LocationComponent() {
                 <>
                     <div>緯度：{latitude}</div>
                     <div>経度：{longitude}</div>
+                    <WeatherComponent latitude={latitude} longitude={longitude}></WeatherComponent>
                 </>
             )}
         </div>

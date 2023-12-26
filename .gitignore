@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# 環境変数ファイル
+/.env
+
 # testing
 /coverage
 
