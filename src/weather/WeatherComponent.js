@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-function WeatherComponent(props) {
+function WeatherComponent({latitude, longitude}) {
     const [weather, setWeather] = useState(null);
 
     useEffect(() =>{
 
         async function fetchWeather() {
             try {
-                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${props.latitude}&lon=${props.longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`);
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`);
                 const data = await response.json();
                 setWeather(data);
             } catch (error) {
@@ -15,11 +15,11 @@ function WeatherComponent(props) {
             }
         }
     
-      if (props.latitude && props.longitude) {
+      if (latitude && longitude) {
         fetchWeather();
     }
 
-    }, [props.latitude, props.longitude])
+    }, [latitude, longitude])
 
 
     return (
